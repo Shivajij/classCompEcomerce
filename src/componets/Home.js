@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { getProduct } from "../Redux/action/Productaction";
 import "./Allstyles/Home.css"
 import { addTocart } from "../Redux/action/Cartaction";
+import { Link } from "react-router-dom";
 
 class Home extends Component {
 
@@ -36,9 +37,10 @@ class Home extends Component {
         <div className="product-row">
           {product.map((ele) => (
             <div key={ele.id} className="product-card" onClick={()=>this.handleAddTocart(ele)}>
+              <Link to={"/cart"}>
               <img alt="img" src={ele.image} height={100} width={150} />
               <p style={{ fontWeight: "bold" }}>Rs: {ele.price}</p>
-              <p>{ele.title}</p>
+              <p>{ele.title}</p></Link>
             </div>
           ))}
         </div>
